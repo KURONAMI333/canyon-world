@@ -1,33 +1,33 @@
-# Canyon World (CW)
+# Canyon World
 
-> Overworld converted to mesa plateaus and deep canyons. Y 60-180 plateau surface, Y 0-30 canyon floor with rivers.
+> Overworld is plateaus and canyons. Y 60-180 is the playable plateau surface; canyons cut down to Y 0-30 with rivers along the floor. Vertical movement is the game; bridges, ladders, gliders, and ropes are essential.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Modrinth](https://img.shields.io/badge/Modrinth-canyon-world-00AF5C)](https://modrinth.com/mod/canyon-world)
-[![CurseForge](https://img.shields.io/badge/CurseForge-canyon-world-F16436)](https://www.curseforge.com/minecraft/mc-mods/canyon-world)
+[![NeoForge 1.21.1](https://img.shields.io/badge/NeoForge-1.21.1-orange.svg)](https://neoforged.net)
+[![Depends on Isekai API](https://img.shields.io/badge/Depends-Isekai%20API-9333ea)](https://github.com/KURONAMI333/isekai-api)
 
 ---
 
-## Supported Loaders / Versions
+## Concept
 
-| Minecraft | NeoForge | Forge | Fabric |
-|---|:---:|:---:|:---:|
-| 1.21.1 | TBD | TBD | TBD |
-| 1.20.1 |  —  | TBD | TBD |
+A world of two elevations — a plateau top where villages and trees sit, and a canyon floor with rivers and forests. Drop into a canyon: 120+ block fall. The vanilla "walk forward to traverse" assumption breaks; planning vertical routes is the gameplay loop.
 
-(TBD: 実装後に更新)
+Pairs naturally with bridge mods (YUNG's Bridges), climbing mods, glider / parachute mods.
 
----
+## How it works
 
-## Why?
+Canyon World is built on **[Isekai API](https://github.com/KURONAMI333/isekai-api)**, a neutral universal worldgen library.
 
-(目的、解決する問題を 2-3 行で)
+The library has no concept of "mesa" or "canyon" — Canyon World composes `step` (high vs low plateau), `mask_y_range` (band separation), and rule-adaptation primitives to express the plateau / canyon worldshape. Plateau-top structure placement and canyon-floor structure placement are expressed via `SpatialPredicate` combinations like `And(YInRange(60, 180), SolidFloor(2))`.
 
-## Installation
+## Status
 
-1. ローダー導入
-2. 依存 MOD 導入（あれば）
-3. `canyon-world-X.Y.Z-{loader}-{mc}.jar` を `mods/` に配置
+**v0.1**: skeleton. `WorldshapeDescriptor` declaration + density composition land with Isekai API v0.2.
+
+## Dependencies
+
+- NeoForge 1.21.1
+- [Isekai API](https://github.com/KURONAMI333/isekai-api) (required)
 
 ## License
 
